@@ -2,20 +2,19 @@ const { Server } = require("socket.io");
 const express = require("express");
 const app = express();
 const cors = require("cors");
-
+const http = require('http');
+const path = require('path')
 app.use(express.json());
 app.use(cors());
+app.use(express.static('../client/build'));
 
-const io = new Server(8000, {
-  cors: true,
-});
-const languageConfig = {
-  python3: { versionIndex: "3" },
-  java: { versionIndex: "3" },
-  cpp: { versionIndex: "4" },
-  nodejs: { versionIndex: "3" },
-  c: { versionIndex: "4" },
-};
+app.use((req,res,next)=>{
+  res.sendFile(path.join(__dirname,'../client/build','index.html'))
+})
+
+const server = http.createServer(app);
+const io = new Server(server,{cors:true})
+
 
 const emailToSocketIdMap = new Map();
 const socketidToEmailMap = new Map();
@@ -99,20 +98,12 @@ io.on("connection", (socket) => {
     io.to(to).emit("wait:for:call", { from: socket.id, email });
   });
   socket.on("disconnecting", () => {
-    // const email = socketidToEmailMap.get(socket.id);
-    // if (email) {
-    //   emailToSocketIdMap.delete(email);
-    //   socketidToEmailMap.delete(socket.id);
-    // }
-
-    // Notify all rooms the user was in
-    // const rooms = socket.rooms; // Includes all rooms the socket is part of
-    // console.log(rooms)
-    // rooms.forEach((roomId) => {
-    //   console.log(`${socket.id} left room ${roomId}`);
-    // });
+ 
     io.emit("user:left", { id: socket.id });
 
     console.log(`Socket Disconnected: ${socket.id}`);
   });
 });
+
+const PORT = process.env.PORT || 8000;
+server.listen(PORT, () => console.log(`Listening on port ${PORT}`));
