@@ -1,9 +1,10 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSocket } from "../utils/SocketProvider.js";
-import { Video, Users, ArrowRight } from "lucide-react";
+import { useSocket } from "../utils/SocketProvider.js.js";
+import { Video, Users, ArrowRight, Copy } from "lucide-react";
 import { v4 as uuid } from "uuid";
 import toast from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 const Lobby = () => {
   const [email, setEmail] = useState("");
   const [room, setRoom] = useState("");
@@ -18,12 +19,24 @@ const Lobby = () => {
     },
     [email, room, socket]
   );
+
   const generateRoomid = () => {
-    const newRoomId = uuid(); // Generate a new UUID
-    setRoom(newRoomId); // Update the state with the new room ID
-    console.log(newRoomId); // Log the newly generated room ID
+    const newRoomId = uuid();
+    setRoom(newRoomId);
+    console.log(newRoomId);
     toast.success(`Room ID generated: ${newRoomId}`);
   };
+
+  const copyRoomIdToClipboard = () => {
+    if (!room) {
+      toast.error("No Room ID to copy!");
+      return;
+    }
+    navigator.clipboard.writeText(room).then(() => {
+      toast.success("Room ID copied to clipboard!");
+    });
+  };
+
   const handleJoinRoom = useCallback(
     (data) => {
       const { email, room } = data;
@@ -40,7 +53,9 @@ const Lobby = () => {
   }, [socket, handleJoinRoom]);
 
   return (
+  
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 flex items-center justify-center p-4">
+        <Toaster/>
       <div className="max-w-md w-full">
         {/* Logo/Header Section */}
         <div className="text-center mb-8">
@@ -48,9 +63,7 @@ const Lobby = () => {
             <Video className="w-8 h-8 text-green-500" />
           </div>
           <h1 className="text-2xl font-bold text-gray-800">Join Meeting</h1>
-          <p className="text-gray-500 mt-2">
-            Enter room details to get started
-          </p>
+          <p className="text-gray-500 mt-2">Enter room details to get started</p>
         </div>
 
         {/* Form Card */}
@@ -63,22 +76,28 @@ const Lobby = () => {
                 className="block text-sm font-medium text-gray-700 mb-2">
                 Room ID
               </label>
-              <div className="relative">
+              <div className="relative flex items-center">
                 <input
                   type="text"
                   id="roomId"
                   name="roomId"
                   value={room}
                   onChange={(e) => setRoom(e.target.value)}
-                  className={`w-full px-4 py-3 rounded-lg border ${
+                  className={`flex-1 px-4 py-3 rounded-lg border ${
                     errors.roomId ? "border-red-500" : "border-gray-200"
                   } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                   placeholder="Enter room ID"
                 />
-                {errors.roomId && (
-                  <p className="mt-1 text-sm text-red-500">{errors.roomId}</p>
-                )}
+                <button
+                  type="button"
+                  onClick={copyRoomIdToClipboard}
+                  className="ml-2 bg-gray-100 hover:bg-gray-200 p-2 rounded-lg transition-colors">
+                  <Copy className="w-5 h-5 text-gray-500" />
+                </button>
               </div>
+              {errors.roomId && (
+                <p className="mt-1 text-sm text-red-500">{errors.roomId}</p>
+              )}
             </div>
 
             {/* Username Input */}

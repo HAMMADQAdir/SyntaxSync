@@ -72,6 +72,11 @@ io.on("connection", (socket) => {
     console.log("output", output);
     socket.in(roomId).emit("output", { output });
   });
+
+  socket.on("language:change",({roomId,language,snippet})=>{
+    console.log(snippet,roomId);
+    socket.in(roomId).emit("language:change",{language,snippet})
+  })
   socket.on("call:accepted", ({ to, ans }) => {
     io.to(to).emit("call:accepted", { from: socket.id, ans });
   });

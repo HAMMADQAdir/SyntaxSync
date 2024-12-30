@@ -53,6 +53,7 @@ function Editor({ socket, roomId, onCodeChange }) {
       editorRef.current.setSize("100%", "h-full");
       editorRef.current.setValue(CODE_SNIPPETS[selectedLanguage]);
       code.current = CODE_SNIPPETS[selectedLanguage];
+
       // Set up change handler
       editorRef.current.on("change", (instance, changes) => {
         const { origin } = changes;
@@ -131,6 +132,18 @@ function Editor({ socket, roomId, onCodeChange }) {
 
   useEffect(() => {
     socket.emit("output", { roomId, output });
+    const handleLanguageChange = ({ language, snippet }) => {
+      console.log(snippet)
+      if (LANGUAGE_MODES[language]) {
+        setSelectedLanguage(language);
+        editorRef.current.setOption("mode", LANGUAGE_MODES[language]);
+        editorRef.current.setValue(snippet);
+        code.current = snippet;
+        console.log(snippet)
+      }
+    };
+
+    socket.on("language:change", handleLanguageChange);
   }, [output]);
 
   const handleClickOpen = () => {
@@ -151,11 +164,23 @@ function Editor({ socket, roomId, onCodeChange }) {
       editorRef.current.setValue(CODE_SNIPPETS[language]);
       code.current = CODE_SNIPPETS[language];
       console.log("Mode set to:", mode);
+      socket.emit("language:change", {
+        roomId,
+        language,
+        snippet: CODE_SNIPPETS[language],
+      });
     } else {
       console.error("Invalid mode for language:", language);
     }
   };
+  // // Listen for language change events
+  // useEffect(() => {
 
+
+  //   return () => {
+  //     socket.off("language:change", handleLanguageChange);
+  //   };
+  // }, [socket]);
   return (
     <div className="h-full w-full">
       <Toaster />
@@ -163,12 +188,12 @@ function Editor({ socket, roomId, onCodeChange }) {
 
       <div className="flex justify-center items-center">
         <Button
-         variant="contained"
+          variant="contained"
           sx={{
             backgroundColor: "#22c55e",
             marginTop: "4px",
             color: "black",
-            border:"#22c55e",
+            border: "#22c55e",
             "&:hover": { backgroundColor: "#22c55f" },
           }}
           onClick={handleClickOpen}>

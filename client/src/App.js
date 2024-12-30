@@ -1,9 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+
 import { Routes,Route } from 'react-router-dom';
-import Lobby from './components/Lobby.js';
+import Lobby from './components/Lobby.jsx';
 import Room from './components/Room.jsx';
-import VideoCall from './components/videocall.jsx';
+
 
 
 function App() {
