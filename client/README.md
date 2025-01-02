@@ -16,7 +16,7 @@
 Syntax Sync is an advanced collaborative platform designed for real-time synchronization and editing of code across multiple users. Built with WebRTC and WebSockets, it combines the power of real-time communication with efficient code collaboration tools. The platform aims to enhance team productivity by providing an interactive environment where participants can code, debug, and execute programs simultaneously while staying in sync.
 
 
-Video Demo:
+##Video Demo:
 
 https://github.com/user-attachments/assets/29906b30-b418-4f47-9cf6-ece3a43ded2c
 
