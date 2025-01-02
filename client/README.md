@@ -1,4 +1,17 @@
-Key Points
+## Key Points
+
+[Syntax Sync](#syntax-sync) is an advanced collaborative platform designed for real-time synchronization and editing of code across multiple users. Built with WebRTC and WebSockets, it combines the power of real-time communication with efficient code collaboration tools. The platform aims to enhance team productivity by providing an interactive environment where participants can code, debug, and execute programs simultaneously while staying in sync.
+
+[Video Demo](#video-demo)
+
+[Key Features](#key-features)
+
+[Technology Stack](#technology-stack)
+
+[How To Run](#how-to-run)
+
+[Use Cases](#use-cases)
+
 
 Syntax Sync is an advanced collaborative platform designed for real-time synchronization and editing of code across multiple users. Built with WebRTC and WebSockets, it combines the power of real-time communication with efficient code collaboration tools. The platform aims to enhance team productivity by providing an interactive environment where participants can code, debug, and execute programs simultaneously while staying in sync.
 
