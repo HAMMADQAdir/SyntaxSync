@@ -42,15 +42,18 @@ Syntax Sync is an advanced collaborative platform designed for real-time synchro
    ```bash
    git clone https://github.com/HAMMADQAdir/SyntaxSync.git
 
-   Navigate to the backend folder and install dependencies:
+   
 
-2. Install the neccessary packages and run
-```bash
-cd backend
-npm i
-npm start
+2. Navigate to the backend folder and install dependencies:
+   ```bash
+    cd backend
+    npm i
+    npm start
 
-cd client
-npm i
-npm run dev
+
+3. Navigate to the client folder and install dependencies:
+   ```bash
+    cd client
+    npm i
+    npm run dev
 
