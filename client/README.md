@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+Key Points
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Syntax Sync is an advanced collaborative platform designed for real-time synchronization and editing of code across multiple users. Built with WebRTC and WebSockets, it combines the power of real-time communication with efficient code collaboration tools. The platform aims to enhance team productivity by providing an interactive environment where participants can code, debug, and execute programs simultaneously while staying in sync.
 
-## Available Scripts
 
-In the project directory, you can run:
+Video Demo:
 
-### `npm start`
+https://github.com/user-attachments/assets/29906b30-b418-4f47-9cf6-ece3a43ded2c
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Key Features:
 
-### `npm test`
+Real-Time Code Collaboration: Seamlessly write, edit, and share code in real-time with full synchronization across users.
+Integrated Code Execution: Run your code directly within the platform with real-time feedback for instant debugging.
+Video Conferencing with Screen Sharing: Built-in WebRTC-based video calling and screen sharing to enhance team communication.
+Syntax Highlighting and Language Support: Optimized editor with support for multiple programming languages and syntax highlighting.
+User-Friendly Interface: Intuitive design with tools for effortless navigation and collaboration.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+Technology Stack:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#Frontend: React.js, Ace/Monaco Editor for code editing.
+#Backend: Node.js with Express.js, integrated WebSocket server for real-time communication.
+#WebRTC: Peer-to-peer connection for video calling and screen sharing.
+#CodeEditor: Code Mirror
+#Compiler: From Pistorn Api check out-> https://piston.readthedocs.io/en/latest/api-v2/
+{base Url: "https://emkc.org/api/v2/piston",endpoint:"/execute"} to execute code
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+How To Run:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Note: You must have nodejs installed in your device
 
-### `npm run eject`
+first clone the repo : paste the url in your terminal-> git clone https://github.com/HAMMADQAdir/SyntaxSync.git
+then 
+cd backend 
+npm i (this will download all the neccessary packages
+npm start (to run the backend code)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+similary:
+cd client
+npm i
+npm run dev (to runthe client side code)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Use Cases:
 
-## Learn More
+Pair Programming
+Online Coding Interviews
+Remote Team Development
+Real-Time Debugging and Code Reviews
+Whether you’re a developer, team lead, or educator, Syntax Sync is your go-to solution for collaborative coding.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
