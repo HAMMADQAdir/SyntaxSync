@@ -224,7 +224,45 @@ const RoomPage = () => {
     setRemoteSocketId(null);
     setRemoteEmail(null);
     setRemoteStream(null);
+    window.close()
   };
+
+ const showScreen = async () => {
+  console.log("inside")
+  try {
+    // Request access to display media (screen sharing)
+    const screenStream = await navigator.mediaDevices.getDisplayMedia({
+      video: true,
+      audio: false, // Change to true if you want to share audio
+    });
+
+    // Get the screen track
+    const screenTrack = screenStream.getVideoTracks()[0];
+
+    if (screenTrack) {
+      // Replace the current video track in the myStream
+      const sender = peer.peer
+        .getSenders()
+        .find((s) => s.track.kind === "video");
+
+      if (sender) {
+        sender.replaceTrack(screenTrack); // Update the sender's track
+        
+      }
+
+      // Stop the screen sharing when the track ends
+      screenTrack.onended = () => {
+        const videoTrack = myStream.getVideoTracks()[0];
+        if (videoTrack && sender) {
+          sender.replaceTrack(videoTrack); // Revert to the original video track
+        }
+      };
+    }
+  } catch (error) {
+    console.error("Error while sharing screen:", error);
+  }
+};
+
   return (
     <div>
       <Toaster />
@@ -318,7 +356,7 @@ const RoomPage = () => {
                 {isVideoOff ? <VideoOff size={20} /> : <Camera size={20} />}
               </button>
               <button className="p-3 rounded-full border border-gray-200 hover:bg-gray-100">
-                <Monitor size={20} />
+                <Monitor size={20} onClick={showScreen} />
               </button>
               <button className="p-3 rounded-full bg-red-500 text-white hover:bg-red-600">
                 {remoteSocketId && (
