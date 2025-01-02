@@ -32,8 +32,11 @@ Note: You must have nodejs installed in your device
 
 first clone the repo : paste the url in your terminal-> git clone https://github.com/HAMMADQAdir/SyntaxSync.git
 then 
+
 cd backend 
+
 npm i (this will download all the neccessary packages
+
 npm start (to run the backend code)
 
 similary:
