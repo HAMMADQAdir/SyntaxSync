@@ -41,24 +41,24 @@ Technology Stack:
 
 How To Run:
 
-Note: You must have nodejs installed in your device
+**Note**: You must have nodejs installed in your device
 
 first clone the repo : paste the url in your terminal-> git clone https://github.com/HAMMADQAdir/SyntaxSync.git
 then 
 
-cd backend 
+**cd backend** 
 
-npm i (this will download all the neccessary packages
+**npm i**(this will download all the neccessary packages
 
-npm start (to run the backend code)
+**npm start** (to run the backend code)
 
 similary:
 
-cd client
+**cd client**
 
-npm i
+**npm i**
 
-npm run dev (to runthe client side code)
+**npm run dev** (to runthe client side code)
 
 
 
