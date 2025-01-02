@@ -40,8 +40,11 @@ npm i (this will download all the neccessary packages
 npm start (to run the backend code)
 
 similary:
+
 cd client
+
 npm i
+
 npm run dev (to runthe client side code)
 
 
