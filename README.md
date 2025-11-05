@@ -23,7 +23,7 @@ Syntax Sync is an advanced collaborative platform designed for real-time synchro
 - **Video Conferencing with Screen Sharing:** Built-in WebRTC-based video calling and screen sharing to enhance team communication.
 - **Syntax Highlighting and Language Support:** Optimized editor with support for multiple programming languages and syntax highlighting.
 - **User-Friendly Interface:** Intuitive design with tools for effortless navigation and collaboration.
-
+- **Live Demo:** [check now](https://syntaxsync-4.onrender.com/) 
 ## Technology Stack
 
 - **Frontend:** React.js, Ace/Monaco Editor for code editing.
