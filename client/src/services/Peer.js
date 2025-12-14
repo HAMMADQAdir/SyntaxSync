@@ -12,8 +12,8 @@ class PeerService {
           ],
         });
       }
+      this.dataChannel = this.peer.createDataChannel("code-sync");
     }
-  
     async getAnswer(offer) {
       if (this.peer) {
         await this.peer.setRemoteDescription(offer);
